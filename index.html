@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Amortization Calculator</title>
+    <link rel="stylesheet" href="assets/style.css" />
+
+    <!-- CDN for JS Chart library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="calculator"> <!-- Start of user input fields -->
+
+            <div class="heading">
+                <h3>Loan & Amortization Calculator</h3>
+                <small>See a breakdown of monthly payments</small>
+            </div>
+
+            <form action="#" class="form-control">
+
+                <div class="input-group">
+                    <label for="loan-amount">Loan Amount:</label>
+                    <input type="text" value="" id="loan-amount" />
+                </div>
+
+                <div class="input-group">
+                    <label for="interest-rate">Interest Rate:</label>
+                    <input type="text" value="" id="interest-rate" />
+                </div>
+
+                <div class="input-group">
+                    <label for="loan-tenure">No. of Months:</label>
+                    <input type="text" value="" id="loan-tenure" />
+                </div>
+
+                <div class="input-group">
+                    <button>Calculate</button>
+                </div>
+
+            </form> <!-- End of user input fields -->
+
+
+            <div id="results"> <!-- Container for a generated table showing the computed values -->
+
+            </div>
+
+        </div>
+
+        <section>
+
+            <canvas id="data-set"></canvas> <!-- The graph/chart displays in this area -->
+
+        </section>
+
+    </div>
+
+    <section class="breakDown"> <!-- The monthly amortization schedule is listed here -->
+
+        <div id="loan-info"></div>
+
+    </section>
+
+    <script src="assets/script.js"></script>
+</body>

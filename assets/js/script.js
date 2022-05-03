@@ -51,4 +51,5 @@ function calculate(e) {
   info +=
     "<td align='right'>$" + round(monthly_payment + extra, 2) + "</td></tr>";
   info += "</table>";
-  document.getElementById("results").innerHTML = info; /* info is a string container all the html table code*/
+  document.getElementById("results").innerHTML = info; 
+}

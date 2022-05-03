@@ -1,0 +1,58 @@
+
+  
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400");
+
+/* Initial page settings */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serrif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 40px;
+}
+
+.calculator {
+  width: 40%;
+  color: #063102;
+}
+
+.heading h3 {
+    font-size: 25px;
+    color: #0c8d00;
+}
+
+.input-group {
+    margin: 20px 0;
+}
+
+.input-group label {
+    display: block;
+}
+
+.input-group input,
+.input-group button {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #0c8d00;
+    outline: none;
+    border-radius: 5px;
+}
+
+.input-group button {
+  background: #0c8d00;
+  color: #fff;
+  border: none;
+  padding: 8px 32px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  margin: 24px 0;
+}

@@ -1,5 +1,3 @@
-
-  
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400");
 
 /* Initial page settings */
@@ -55,4 +53,42 @@
   font-weight: 900;
   cursor: pointer;
   margin: 24px 0;
+}
+
+.results {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+    width: 100%
+}
+.data-set {
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    margin: 10px;
+    padding:20px;
+    display: flex;
+    align-items: center;
+}
+
+.tableFixHead {
+    overflow: auto;
+    height: 106px;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+}
+
+th,
+td {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background: #eee;
 }

@@ -64,6 +64,8 @@ function calculate(e) {
   var payment_counter = 1;
   var total_interest = 0;
   monthly_payment = monthly_payment + extra;
+  data.push(current_balance);
+  labels.push(payment_counter);
 
   while (current_balance > 0) {
     //create rows
@@ -90,8 +92,12 @@ function calculate(e) {
     table += "</tr>";
 
     payment_counter++;
-    data.push(current_balance);
-    labels.push(payment_counter);
+
+    if (current_balance != 0) {
+      data.push(current_balance);
+      labels.push("Month " + payment_counter);
+    }
+
   }
   table += "</tbody></table>";
 
@@ -107,12 +113,12 @@ function calculate(e) {
 function drawGraph() {
   line.destroy();
   line = new Chart(context, {
-    type: "line",
+    type: "bar",
     data: {
       labels,
       datasets: [
         {
-          label: "Repayments",
+          label: "Amount Owing",
           data,
           fill: true,
           backgroundColor: "rgba(12, 141, 0, 0.7)",

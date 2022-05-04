@@ -71,6 +71,7 @@
 .tableFixHead {
     overflow: auto;
     height: 106px;
+    align-items: center;
 }
 
 .tableFixHead thead th {

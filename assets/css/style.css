@@ -55,6 +55,24 @@
   margin: 24px 0;
 }
 
+.input-group.success input {
+	border: 1px solid #2ecc71;
+}
+
+.input-group.error input {
+	border: 1px solid #e74c3c;
+}
+
+/*.input-group.success {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.input-group.error {
+	color: #e74c3c;
+	visibility: visible;
+}*/
+
 .results {
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
     width: 40%

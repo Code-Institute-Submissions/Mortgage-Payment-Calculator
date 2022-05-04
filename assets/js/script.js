@@ -1,8 +1,9 @@
-const context = document.getElementById("data-set").getContext("2d");
+const chartContext = document.getElementById("data-set").getContext("2d");
 const calcButton = document.querySelector(".input-group button");
-let line = new Chart(context, {});
+let line = new Chart(chartContext, {});
 let data = [];
 let labels = [];
+let paidToDate = [];
 
 calcButton.addEventListener("click", calculate);
 
@@ -12,7 +13,6 @@ function calculate(e) {
   const interestRateInput = document.getElementById("interest-rate");
   const loanTenureInput = document.getElementById("loan-tenure");
 
-  //let interest = interestRate / 12 / 100;
   let extra = 0.0;
   i = interestRateInput.value / 100;
   loan_amt = loanAmountInput.value;
@@ -96,6 +96,7 @@ function calculate(e) {
     if (current_balance != 0) {
       data.push(current_balance);
       labels.push("Month " + payment_counter);
+      paidToDate.push(loan_amt - current_balance)
     }
 
   }
@@ -112,7 +113,7 @@ function calculate(e) {
 
 function drawGraph() {
   line.destroy();
-  line = new Chart(context, {
+  line = new Chart(chartContext, {
     type: "bar",
     data: {
       labels,
@@ -124,6 +125,12 @@ function drawGraph() {
           backgroundColor: "rgba(12, 141, 0, 0.7)",
           borderWidth: 3,
         },
+        {
+          label: "Payments Made",
+          backgroundColor: "rgba(104, 158, 217, 0.8)",
+          data: paidToDate,
+          //y2axis: true
+      },
       ],
     },
   });

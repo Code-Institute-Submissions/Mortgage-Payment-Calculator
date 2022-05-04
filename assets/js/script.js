@@ -24,9 +24,12 @@ months = loanTenureInput.value;
 rate = interestRateInput.value;
 
 const regexNumber = /^[0-9]*(\.[0-9]{0,2})?$/;
-if (!loan_amt.match(regexNumber)) {
-  loanAmountInput.value = "10000";
+if  (!loan_amt.match(regexNumber) || (!rate.match(regexNumber))) {
+  loanAmountInput.value = 0;
+  loanTenureInput.value = 0;
+  rate=0
 }
+
 let monthly_payment =
   (loan_amt * (i / 12) * Math.pow(1 + i / 12, months)) /
   (Math.pow(1 + i / 12, months) - 1);

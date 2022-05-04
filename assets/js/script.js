@@ -1,4 +1,4 @@
-const chartContext = document.getElementById("data-set").getContext("2d");
+let chartContext = document.getElementById("data-set").getContext("2d");
 const calcButton = document.querySelector(".input-group button");
 let line = new Chart(chartContext, {});
 let data = [];
@@ -7,11 +7,11 @@ let paidToDate = [];
 
 calcButton.addEventListener("click", calculate);
 
-function calculate(e) {
-  e.preventDefault();
-  const loanAmountInput = document.getElementById("loan-amount");
-  const interestRateInput = document.getElementById("interest-rate");
-  const loanTenureInput = document.getElementById("loan-tenure");
+function calculate(event) {
+  event.preventDefault();
+  let loanAmountInput = document.getElementById("loan-amount");
+  let interestRateInput = document.getElementById("interest-rate");
+  let loanTenureInput = document.getElementById("loan-tenure");
 
   let extra = 0.0;
   i = interestRateInput.value / 100;
@@ -19,11 +19,11 @@ function calculate(e) {
   months = loanTenureInput.value;
   rate = interestRateInput.value;
 
-  let regexNumber = /^[0-9]*(\.[0-9]{0,2})?$/;
+  const regexNumber = /^[0-9]*(\.[0-9]{0,2})?$/;
   if (!loan_amt.match(regexNumber)) {
     loanAmountInput.value = "10000";
   }
-  var monthly_payment =
+  let monthly_payment =
     (loan_amt * (i / 12) * Math.pow(1 + i / 12, months)) /
     (Math.pow(1 + i / 12, months) - 1);
 

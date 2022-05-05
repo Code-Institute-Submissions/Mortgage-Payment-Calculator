@@ -12,23 +12,21 @@ CALC_BUTTON.addEventListener("click", start);
 
 function start(event) {
   event.preventDefault();
-  checkInputs();
-  createPaymentSchedule();
+  
+  if (checkInputs()) {
+    createPaymentSchedule();
+  }
+
   drawGraph();
 }
 
 function createPaymentSchedule() {
 i = interestRateInput.value / 100;
-loan_amt = loanAmountInput.value;
-months = loanTenureInput.value;
-rate = interestRateInput.value;
+loan_amt = parseFloat(loanAmountInput.value);
+months = parseInt(loanTenureInput.value);
+rate = parseFloat(interestRateInput.value);
 
-const regexNumber = /^[0-9]*(\.[0-9]{0,2})?$/;
-if  (!loan_amt.match(regexNumber) || (!rate.match(regexNumber))) {
-  loanAmountInput.value = 0;
-  loanTenureInput.value = 0;
-  rate=0
-}
+
 
 let monthly_payment =
   (loan_amt * (i / 12) * Math.pow(1 + i / 12, months)) /
@@ -37,16 +35,13 @@ let monthly_payment =
 var info = "";
 info += "<table class='results'>";
 info += "<tr><td>Loan Amount:</td>";
-info += "<td align='right'>$" + loan_amt + "</td></tr>";
+info += "<td align='right'>$" + loan_amt.toLocaleString('en') + "</td></tr>";
 info += "<tr><td>Num of Months:</td>";
 info += "<td align='right'>" + months + "</td></tr>";
 info += "<tr><td>Interest Rate:</td>";
 info += "<td align='right'>" + rate + "%</td></tr>";
 info += "<tr><td>Monthly Payment:</td>";
 info += "<td align='right'>$" + round(monthly_payment, 2) + "</td></tr>";
-info += "<tr><td>Total Payment:</td>";
-info +=
-  "<td align='right'>$" + round(monthly_payment, 2) + "</td></tr>";
 info += "</table>";
 document.getElementById("results").innerHTML = info; // info is a string container all the html table code
 
@@ -70,7 +65,7 @@ let current_balance = loan_amt;
 let payment_counter = 1;
 let total_interest = 0;
 data.push(current_balance);
-labels.push(payment_counter);
+labels.push("Month " + payment_counter);
 paidToDate.push(monthly_payment);
 
 while (current_balance > 0) {
@@ -123,6 +118,7 @@ function checkInputs() {
   let regexFilter = /^[1-9]\d*$/;
   if (!loanAmountInput.value.match(regexFilter)) {
     setErrorFor(loanAmountInput, "Invalid amount entered.");
+    return false;
 	}else{
     setSuccessFor(loanAmountInput);
   }
@@ -130,6 +126,7 @@ function checkInputs() {
   regexFilter = /^(?!(?:0|0\.0|0\.00)$)[+]?\d+(\.\d|\.\d[0-9])?$/;
   if (!interestRateInput.value.match(regexFilter)) {
     setErrorFor(interestRateInput, "Invalid rate entered.");
+    return false;
 	}else{
     setSuccessFor(interestRateInput);
   }
@@ -137,10 +134,12 @@ function checkInputs() {
   regexFilter = /^[1-9]\d*$/;
   if (!loanTenureInput.value.match(regexFilter)) {
     setErrorFor(loanTenureInput, "Invalid term entered.");
+    return false;
 	}else{
     setSuccessFor(loanTenureInput);
   }
 
+  return true;
 }
 
 function setErrorFor(input, message) {
